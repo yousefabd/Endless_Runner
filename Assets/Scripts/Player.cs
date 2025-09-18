@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        if(Mathf.Abs(transform.position.x - GetLanePositionX(targetLaneIndex)) > 0.01f)
+        if (Mathf.Abs(transform.position.x - GetLanePositionX(targetLaneIndex)) > 0.01f)
         {
             Vector3 targetPosition = new Vector3(GetLanePositionX(targetLaneIndex), transform.position.y, transform.position.z);
             transform.position = Vector3.Lerp(transform.position, targetPosition, laneMoveSpeed * Time.deltaTime);
@@ -74,5 +74,9 @@ public class Player : MonoBehaviour
         {
             isOnGround = true;
         }
+    }
+    public bool IsOnGround()
+    {
+        return isOnGround;
     }
 }

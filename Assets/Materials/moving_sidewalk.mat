@@ -29,7 +29,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 63d750800c858f34d95cdf4aa9f90364, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0d454d532e2b6224594946c17098899a, type: 3}
         m_Scale: {x: 1, y: 3}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -127,7 +127,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Tiling: {r: 1, g: 3, b: 0, a: 0}
+    - _Tiling: {r: 5, g: 12, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8592501215675221443
 MonoBehaviour:

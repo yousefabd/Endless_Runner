@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1646784abf63c4287af35f856f4588, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  jumpForce: 6
-  playerSpeed: 5
-  laneWidth: 1.5
+  jumpForce: 7
+  playerSpeed: 6
+  laneWidth: 2.2

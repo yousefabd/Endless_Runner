@@ -22,11 +22,15 @@ public class PlayerVisual : MonoBehaviour
     }
     private void Player_OnMove(float direction)
     {
-        if(direction < 0)
+        if (!player.IsOnGround())
+        {
+            return;
+        }
+        if (direction < 0)
         {
             animator.SetTrigger("TurnLeft");
         }
-        else if(direction > 0)
+        else if (direction > 0)
         {
             animator.SetTrigger("TurnRight");
         }
