@@ -24,4 +24,12 @@ public class GameSettings : MonoBehaviour
     {
         return gameSettingsSO.laneWidth;
     }
+    public Vector3 GetBlindSpotPosition()
+    {
+        return gameSettingsSO.blindSpotPosition;
+    }
+    public Vector3 GetFarSpotPosition()
+    {
+        return gameSettingsSO.farSpotPosition;
+    }
 }

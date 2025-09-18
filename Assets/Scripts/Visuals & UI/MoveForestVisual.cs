@@ -5,8 +5,6 @@ using UnityEngine;
 public class MoveForestVisual : MonoBehaviour
 {
     [SerializeField] private Transform forestTransform;
-    [SerializeField] private Transform blindSpot;
-    [SerializeField] private Transform farSpot;
     private List<Transform> forestObjects;
 
     private void Start()
@@ -23,9 +21,9 @@ public class MoveForestVisual : MonoBehaviour
         {
             float newZ = forestObject.transform.position.z - GameSettings.Instance.GetPlayerSpeed() * Time.deltaTime;
             forestObject.position = new Vector3(forestObject.position.x, forestObject.position.y, newZ);
-            if (forestObject.position.z < blindSpot.position.z)
+            if (forestObject.position.z < GameSettings.Instance.GetBlindSpotPosition().z)
             {
-                forestObject.position = new Vector3(forestObject.position.x, forestObject.position.y, farSpot.position.z);
+                forestObject.position = new Vector3(forestObject.position.x, forestObject.position.y, GameSettings.Instance.GetFarSpotPosition().z);
             }
         }
     }

@@ -14,6 +14,7 @@ public class PlayerVisual : MonoBehaviour
         animator = GetComponent<Animator>();
         player.OnJump += Player_OnJump;
         player.OnMove += Player_OnMove;
+        player.OnDuck += Player_OnDuck;
     }
 
     private void Player_OnJump()
@@ -34,5 +35,9 @@ public class PlayerVisual : MonoBehaviour
         {
             animator.SetTrigger("TurnRight");
         }
+    }
+    private void Player_OnDuck()
+    {
+        animator.SetTrigger("Slide");
     }
 }

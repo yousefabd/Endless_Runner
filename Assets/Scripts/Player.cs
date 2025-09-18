@@ -7,21 +7,38 @@ using UnityEngine.XR;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
-    private Rigidbody rigidBody;
     [SerializeField] private float laneMoveSpeed = 10f;
+    [SerializeField] private Collider standCollider;
+    [SerializeField] private Collider duckCollider;
+    private Rigidbody rigidBody;
+
+    private enum PlayerState
+    {
+        Standing,
+        Ducking
+    }
+    private PlayerState currentState;
     private bool isOnGround = true;
     private int targetLaneIndex;
+    private float duckTimerMax = 1f;
+    private float duckTimer = 0f;
     public event Action OnJump;
     public event Action<float> OnMove;
+    public event Action OnDuck;
+    public event Action OnTakeDamage;
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        StandUp();
+        currentState = PlayerState.Standing;
         GameInput.Instance.OnHorizontalMove += GameInput_OnHorizontalMove;
+        GameInput.Instance.OnDuck += GameInput_OnDuck;
         targetLaneIndex = GetLaneIndex(transform.position.x / GameSettings.Instance.GetLaneWidth());
     }
     private void Update()
     {
         HandleJumping();
+        HandleDucking();
         HandleMovement();
     }
 
@@ -32,12 +49,19 @@ public class Player : MonoBehaviour
         {
             targetLaneIndex -= (int)direction;
             // Out of bounds movement
+            OnTakeDamage?.Invoke();
             return;
         }
         OnMove?.Invoke(direction);
-
     }
-
+    private void GameInput_OnDuck()
+    {
+        if (!isOnGround)
+        {
+            rigidBody.AddForce(Vector3.down * GameSettings.Instance.GetJumpForce(), ForceMode.Impulse);
+        }
+        Duck();
+    }
     private void HandleMovement()
     {
         if (Mathf.Abs(transform.position.x - GetLanePositionX(targetLaneIndex)) > 0.01f)
@@ -55,6 +79,21 @@ public class Player : MonoBehaviour
             rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
             OnJump?.Invoke();
+        }
+    }
+    private void HandleDucking()
+    {
+        switch (currentState)
+        {
+            case PlayerState.Standing:
+                break;
+            case PlayerState.Ducking:
+                duckTimer -= Time.deltaTime;
+                if (duckTimer <= 0f)
+                {
+                    StandUp();
+                }
+                break;
         }
     }
     private int GetLaneIndex(float xPosition)
@@ -75,8 +114,30 @@ public class Player : MonoBehaviour
             isOnGround = true;
         }
     }
+    private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("Triggered with " + collision.gameObject.name);
+        OnTakeDamage?.Invoke();
+    }
     public bool IsOnGround()
     {
         return isOnGround;
+    }
+    public void StandUp()
+    {
+        standCollider.enabled = true;
+        duckCollider.enabled = false;
+        currentState = PlayerState.Standing;
+    }
+    public void Duck()
+    {
+        if (currentState == PlayerState.Ducking) return;
+
+        OnDuck?.Invoke();
+
+        duckCollider.enabled = true;
+        standCollider.enabled = false;
+        currentState = PlayerState.Ducking;
+        duckTimer = duckTimerMax;
     }
 }

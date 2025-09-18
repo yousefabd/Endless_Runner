@@ -8,6 +8,7 @@ public class GameInput : MonoBehaviour
     public static GameInput Instance { get; private set; }
 
     public event Action<float> OnHorizontalMove;
+    public event Action OnDuck;
 
     private void Awake()
     {
@@ -16,13 +17,17 @@ public class GameInput : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             OnHorizontalMove?.Invoke(-1f);
         }
-        else if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             OnHorizontalMove?.Invoke(1f);
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            OnDuck?.Invoke();
         }
     }
     public bool IsJumping()
