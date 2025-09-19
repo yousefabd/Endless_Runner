@@ -15,6 +15,7 @@ public class PlayerVisual : MonoBehaviour
         player.OnJump += Player_OnJump;
         player.OnMove += Player_OnMove;
         player.OnDuck += Player_OnDuck;
+        player.OnStandUp += Player_OnStandUp;
     }
 
     private void Player_OnJump()
@@ -38,6 +39,11 @@ public class PlayerVisual : MonoBehaviour
     }
     private void Player_OnDuck()
     {
+        animator.SetBool("isSliding", true);
         animator.SetTrigger("Slide");
+    }
+    private void Player_OnStandUp()
+    {
+        animator.SetBool("isSliding", false);
     }
 }

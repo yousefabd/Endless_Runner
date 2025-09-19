@@ -32,4 +32,8 @@ public class GameSettings : MonoBehaviour
     {
         return gameSettingsSO.farSpotPosition;
     }
+    public float GetLaneMoveSpeed()
+    {
+        return gameSettingsSO.laneMoveSpeed;
+    }
 }

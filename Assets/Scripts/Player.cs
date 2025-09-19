@@ -7,7 +7,6 @@ using UnityEngine.XR;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float laneMoveSpeed = 10f;
     [SerializeField] private Collider standCollider;
     [SerializeField] private Collider duckCollider;
     private Rigidbody rigidBody;
@@ -20,11 +19,12 @@ public class Player : MonoBehaviour
     private PlayerState currentState;
     private bool isOnGround = true;
     private int targetLaneIndex;
-    private float duckTimerMax = 1f;
+    private float duckTimerMax = 0.5f;
     private float duckTimer = 0f;
     public event Action OnJump;
     public event Action<float> OnMove;
     public event Action OnDuck;
+    public event Action OnStandUp;
     public event Action OnTakeDamage;
     private void Start()
     {
@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
         if (Mathf.Abs(transform.position.x - GetLanePositionX(targetLaneIndex)) > 0.01f)
         {
             Vector3 targetPosition = new Vector3(GetLanePositionX(targetLaneIndex), transform.position.y, transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, targetPosition, laneMoveSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, GameSettings.Instance.GetLaneMoveSpeed() * Time.deltaTime);
         }
     }
 
@@ -125,6 +125,7 @@ public class Player : MonoBehaviour
     }
     public void StandUp()
     {
+        OnStandUp?.Invoke();
         standCollider.enabled = true;
         duckCollider.enabled = false;
         currentState = PlayerState.Standing;
