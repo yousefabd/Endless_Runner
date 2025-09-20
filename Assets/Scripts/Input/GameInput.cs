@@ -32,6 +32,6 @@ public class GameInput : MonoBehaviour
     }
     public bool IsJumping()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return Input.GetKey(KeyCode.Space);
     }
 }

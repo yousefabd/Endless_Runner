@@ -257,6 +257,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2745820062994024026, guid: c48012e83d1fa644fbd4dbad5cfcfd8e,
+        type: 3}
+      propertyPath: obstacleSO
+      value: 
+      objectReference: {fileID: 11400000, guid: a71d5c3a955b4a14fbdf3358470657d6,
+        type: 2}
     - target: {fileID: 5606783729965417898, guid: c48012e83d1fa644fbd4dbad5cfcfd8e,
         type: 3}
       propertyPath: m_Name

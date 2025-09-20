@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   jumpForce: 7
-  playerSpeed: 6
+  playerSpeed: 8
+  laneMoveSpeed: 10
   laneWidth: 2.2
+  currentLevel: 1
+  blindSpotPosition: {x: 0, y: 0, z: -10}
+  farSpotPosition: {x: 0, y: 0, z: 70}

@@ -18,7 +18,7 @@ public class GameSettings : MonoBehaviour
     }
     public float GetPlayerSpeed()
     {
-        return gameSettingsSO.playerSpeed;
+        return gameSettingsSO.playerSpeed + (gameSettingsSO.currentLevel - 1) * 0.5f;
     }
     public float GetLaneWidth()
     {
@@ -35,5 +35,13 @@ public class GameSettings : MonoBehaviour
     public float GetLaneMoveSpeed()
     {
         return gameSettingsSO.laneMoveSpeed;
+    }
+    public int GetCurrentLevel()
+    {
+        return gameSettingsSO.currentLevel;
+    }
+    public void LevelUp()
+    {
+        gameSettingsSO.currentLevel++;
     }
 }

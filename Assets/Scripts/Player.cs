@@ -19,12 +19,11 @@ public class Player : MonoBehaviour
     private PlayerState currentState;
     private bool isOnGround = true;
     private int targetLaneIndex;
-    private float duckTimerMax = 0.5f;
+    private float duckTimerMax = 0.8f;
     private float duckTimer = 0f;
     public event Action OnJump;
     public event Action<float> OnMove;
     public event Action OnDuck;
-    public event Action OnStandUp;
     public event Action OnTakeDamage;
     private void Start()
     {
@@ -123,9 +122,12 @@ public class Player : MonoBehaviour
     {
         return isOnGround;
     }
+    public bool IsDucking()
+    {
+        return currentState == PlayerState.Ducking;
+    }
     public void StandUp()
     {
-        OnStandUp?.Invoke();
         standCollider.enabled = true;
         duckCollider.enabled = false;
         currentState = PlayerState.Standing;
