@@ -44,5 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c20f6e3c92347b4c90fd04af02429e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelPrefabs:
-  - {fileID: 560252009303388231, guid: 10d9b73571521f84389950f5411c07cf, type: 3}
+  staticLevelPrefabs:
+  - {fileID: 8339931283326855395, guid: 444734851460df24e9b51beb7292ffb8, type: 3}
+  - {fileID: 4764496737016431045, guid: 10d9b73571521f84389950f5411c07cf, type: 3}
+  - {fileID: 3800747113297647009, guid: 62747fba4caf51043af80dc39f155395, type: 3}
+  - {fileID: 6531583937459466529, guid: e3b08edfab0d04f4095e19a74df802bd, type: 3}
+  - {fileID: 1029284236718217207, guid: f075dbe9b99d60e4c8294ed52b717c6f, type: 3}
+  movingLevelPrefabs:
+  - {fileID: 409671572986098550, guid: 063c7f9b701d6a7428c8ef75c47a27d5, type: 3}
+  - {fileID: 2889090420066384459, guid: a91adac42de34e1429d0e37ad98b7500, type: 3}
+  - {fileID: 2319214855585040621, guid: 1e382937e3348c4428fccff501c5d750, type: 3}

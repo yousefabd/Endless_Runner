@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1646784abf63c4287af35f856f4588, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  jumpForce: 7
+  jumpForce: 9
   playerSpeed: 8
   laneMoveSpeed: 10
   laneWidth: 2.2
   currentLevel: 1
-  blindSpotPosition: {x: 0, y: 0, z: -10}
+  blindSpotPosition: {x: 0, y: 0, z: -15}
   farSpotPosition: {x: 0, y: 0, z: 70}

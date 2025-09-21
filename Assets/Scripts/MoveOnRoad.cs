@@ -9,7 +9,8 @@ public class MoveOnRoad : MonoBehaviour
 
     private void Update()
     {
-        float moveSpeed = GameSettings.Instance.GetPlayerSpeed() + obstacleSO.moveSpeed;
+        float obstacleSpeed = obstacleSO != null ? obstacleSO.moveSpeed : 0f;
+        float moveSpeed = GameSettings.Instance.GetPlayerSpeed() + obstacleSpeed;
         transform.position += moveSpeed * Time.deltaTime * moveDirection;
         if (transform.position.z < GameSettings.Instance.GetBlindSpotPosition().z)
         {

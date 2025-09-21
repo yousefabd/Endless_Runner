@@ -66,9 +66,10 @@ GameObject:
   - component: {fileID: 2781467749645395218}
   - component: {fileID: 3019707271003174617}
   - component: {fileID: 7189094921926598410}
+  - component: {fileID: 5661346167396736665}
   m_Layer: 0
   m_Name: Timmy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +101,7 @@ Rigidbody:
   m_GameObject: {fileID: 8140219773314883329}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1.2
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -130,9 +131,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bec1e89859f1244be0dfeb6fe23ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laneMoveSpeed: 10
   standCollider: {fileID: 8730863186370839026}
   duckCollider: {fileID: 6353669694555906958}
+--- !u!114 &5661346167396736665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140219773314883329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f32ab21abca04f348bc0ee0bbea121d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8854683597013914753
 GameObject:
   m_ObjectHideFlags: 0

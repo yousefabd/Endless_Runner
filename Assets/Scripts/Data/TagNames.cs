@@ -6,4 +6,5 @@ public static class TagNames
 {
     public const string Floor = "Floor";
     public const string Obstacle = "Obstacle";
+    public const string Player = "Player";
 }

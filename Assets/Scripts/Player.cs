@@ -7,6 +7,7 @@ using UnityEngine.XR;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
     [SerializeField] private Collider standCollider;
     [SerializeField] private Collider duckCollider;
     private Rigidbody rigidBody;
@@ -25,6 +26,10 @@ public class Player : MonoBehaviour
     public event Action<float> OnMove;
     public event Action OnDuck;
     public event Action OnTakeDamage;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
@@ -115,8 +120,11 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Triggered with " + collision.gameObject.name);
-        OnTakeDamage?.Invoke();
+        if (collision.gameObject.CompareTag(TagNames.Obstacle))
+        {
+            OnTakeDamage?.Invoke();
+            Debug.Log("ouch");
+        }
     }
     public bool IsOnGround()
     {
