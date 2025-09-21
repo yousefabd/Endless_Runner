@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     private int targetLaneIndex;
     private float duckTimerMax = 0.8f;
     private float duckTimer = 0f;
+    private float invincibleTimerMax = 0.8f;
+    private float invincibleTimer;
     public event Action OnJump;
     public event Action<float> OnMove;
     public event Action OnDuck;
@@ -44,6 +46,7 @@ public class Player : MonoBehaviour
         HandleJumping();
         HandleDucking();
         HandleMovement();
+        invincibleTimer -= Time.deltaTime;
     }
 
     private void GameInput_OnHorizontalMove(float direction)
@@ -122,8 +125,11 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(TagNames.Obstacle))
         {
-            OnTakeDamage?.Invoke();
-            Debug.Log("ouch");
+            if (invincibleTimer <= 0)
+            {
+                OnTakeDamage?.Invoke();
+            }
+            invincibleTimer = invincibleTimerMax;
         }
     }
     public bool IsOnGround()

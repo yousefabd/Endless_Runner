@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4532063800700804624}
   - component: {fileID: 5800926472015083972}
-  - component: {fileID: 7267131959643817266}
   - component: {fileID: 988166808044244840}
+  - component: {fileID: 2040098477572693866}
   m_Layer: 0
   m_Name: Gem
   m_TagString: Untagged
@@ -48,8 +48,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSO: {fileID: 0}
---- !u!135 &7267131959643817266
-SphereCollider:
+--- !u!114 &988166808044244840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920176248346919269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759dadbe7d54c0b44b5886f2b6226a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &2040098477572693866
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -66,21 +78,11 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.7
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &988166808044244840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7920176248346919269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 759dadbe7d54c0b44b5886f2b6226a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Radius: 0.9
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &4183716219039424944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -122,7 +124,7 @@ PrefabInstance:
     - target: {fileID: 6413751723005570043, guid: a81644c0d262ac94c8a78a4b54ee31ff,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6413751723005570043, guid: a81644c0d262ac94c8a78a4b54ee31ff,
         type: 3}
@@ -137,17 +139,17 @@ PrefabInstance:
     - target: {fileID: 6413751723005570043, guid: a81644c0d262ac94c8a78a4b54ee31ff,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6413751723005570043, guid: a81644c0d262ac94c8a78a4b54ee31ff,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6413751723005570043, guid: a81644c0d262ac94c8a78a4b54ee31ff,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6413751723005570043, guid: a81644c0d262ac94c8a78a4b54ee31ff,
         type: 3}

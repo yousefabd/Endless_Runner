@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
 public class HealthSystem : MonoBehaviour
 {
     public static HealthSystem Instance { get; private set; }
-    private int lives = 3;
+    int maxLives = 3;
+    private int lives;
 
     public event Action OnGameOver;
     private void Awake()
     {
         Instance = this;
+        lives = maxLives;
     }
     private void Start()
     {
@@ -25,5 +26,9 @@ public class HealthSystem : MonoBehaviour
         {
             OnGameOver?.Invoke();
         }
+    }
+    public int GetMaxLives()
+    {
+        return maxLives;
     }
 }

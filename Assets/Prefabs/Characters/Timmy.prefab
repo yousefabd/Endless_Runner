@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8730863186370839026}
   m_Layer: 0
   m_Name: StandCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 3019707271003174617}
   - component: {fileID: 7189094921926598410}
   - component: {fileID: 5661346167396736665}
+  - component: {fileID: 1436305956878373215}
   m_Layer: 0
   m_Name: Timmy
   m_TagString: Player
@@ -145,6 +146,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f32ab21abca04f348bc0ee0bbea121d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1436305956878373215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140219773314883329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edf92952be5d664fb9eae419480aeb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8854683597013914753
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +170,7 @@ GameObject:
   - component: {fileID: 6353669694555906958}
   m_Layer: 0
   m_Name: DuckCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

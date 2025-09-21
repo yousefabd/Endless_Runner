@@ -45,10 +45,10 @@ public class LevelSpawner : MonoBehaviour
                 levelCountMax = Random.Range(2, 4);
                 break;
             case SpawnerState.Moving:
-                levelCountMax = Random.Range(1, 3);
+                levelCountMax = 1;
                 break;
             case SpawnerState.Cooldown:
-                cooldownTimerMax = 20f;
+                cooldownTimerMax = 10f;
                 cooldownTimer = cooldownTimerMax;
                 break;
         }
@@ -61,9 +61,15 @@ public class LevelSpawner : MonoBehaviour
         if (levelCount >= levelCountMax)
         {
             if (currentSpawnState == SpawnerState.Static)
+            {
                 EnterState(SpawnerState.Cooldown);
+                Debug.Log("start moving");
+            }
             else if (currentSpawnState == SpawnerState.Moving)
+            {
                 EnterState(SpawnerState.Static);
+            }
+            return;
         }
         SpawnLevel();
         levelCount++;
@@ -73,13 +79,11 @@ public class LevelSpawner : MonoBehaviour
         Transform levelPrefab;
         if (currentSpawnState == SpawnerState.Static)
         {
-            Debug.Log("spawn static level");
             int randomIndex = Random.Range(0, staticLevelPrefabs.Count);
             levelPrefab = staticLevelPrefabs[randomIndex];
         }
         else
         {
-            Debug.Log("spawn moving level");
             int randomIndex = Random.Range(0, movingLevelPrefabs.Count);
             levelPrefab = movingLevelPrefabs[randomIndex];
         }
