@@ -55,7 +55,6 @@ public class Player : MonoBehaviour
         if (Mathf.Abs(targetLaneIndex) > 1)
         {
             targetLaneIndex -= (int)direction;
-            // Out of bounds movement
             OnTakeDamage?.Invoke();
             return;
         }
@@ -71,9 +70,10 @@ public class Player : MonoBehaviour
     }
     private void HandleMovement()
     {
-        if (Mathf.Abs(transform.position.x - GetLanePositionX(targetLaneIndex)) > 0.01f)
+        float lanePositionX = GetLanePositionX(targetLaneIndex);
+        if (Mathf.Abs(transform.position.x - lanePositionX) > 0.01f)
         {
-            Vector3 targetPosition = new Vector3(GetLanePositionX(targetLaneIndex), transform.position.y, transform.position.z);
+            Vector3 targetPosition = new Vector3(lanePositionX, transform.position.y, transform.position.z);
             transform.position = Vector3.Lerp(transform.position, targetPosition, GameSettings.Instance.GetLaneMoveSpeed() * Time.deltaTime);
         }
     }

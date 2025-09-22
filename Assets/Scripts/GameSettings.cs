@@ -7,10 +7,26 @@ public class GameSettings : MonoBehaviour
     public static GameSettings Instance { get; private set; }
 
     [SerializeField] private GameSettingsSO gameSettingsSO;
+    private int canMove = 1;
+    private int currentLevel = 1;
 
     private void Awake()
     {
         Instance = this;
+    }
+    private void Start()
+    {
+        GameManager.Instance.OnGameOver += GameManager_OnGameOver;
+        GameManager.Instance.OnRestart += GameManager_OnRestart;
+    }
+    private void GameManager_OnGameOver()
+    {
+        canMove = 0;
+    }
+    private void GameManager_OnRestart()
+    {
+        canMove = 1;
+        currentLevel = 1;
     }
     public float GetJumpForce()
     {
@@ -18,7 +34,7 @@ public class GameSettings : MonoBehaviour
     }
     public float GetPlayerSpeed()
     {
-        return gameSettingsSO.playerSpeed + (gameSettingsSO.currentLevel - 1) * 0.5f;
+        return (gameSettingsSO.playerSpeed + (gameSettingsSO.currentLevel - 1) * 0.5f) * canMove;
     }
     public float GetLaneWidth()
     {
@@ -42,6 +58,6 @@ public class GameSettings : MonoBehaviour
     }
     public void LevelUp()
     {
-        gameSettingsSO.currentLevel++;
+        currentLevel++;
     }
 }

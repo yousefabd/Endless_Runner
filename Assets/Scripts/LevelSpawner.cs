@@ -19,6 +19,10 @@ public class LevelSpawner : MonoBehaviour
     {
         EnterState(SpawnerState.Static);
     }
+    private void Start()
+    {
+        GameManager.Instance.OnGameOver += GameManager_OnGameOver;
+    }
     private void Update()
     {
         switch (currentSpawnState)
@@ -87,7 +91,7 @@ public class LevelSpawner : MonoBehaviour
             int randomIndex = Random.Range(0, movingLevelPrefabs.Count);
             levelPrefab = movingLevelPrefabs[randomIndex];
         }
-        Transform newLevel = Instantiate(levelPrefab, GameSettings.Instance.GetFarSpotPosition(),Quaternion.identity);
+        Transform newLevel = Instantiate(levelPrefab, GameSettings.Instance.GetFarSpotPosition(), Quaternion.identity);
         float zSize = newLevel.GetComponent<LevelSettings>().GetZSize();
         levelDistance = zSize;
     }
@@ -98,5 +102,9 @@ public class LevelSpawner : MonoBehaviour
         {
             EnterState(SpawnerState.Moving);
         }
+    }
+    private void GameManager_OnGameOver()
+    {
+        gameObject.SetActive(false);
     }
 }
