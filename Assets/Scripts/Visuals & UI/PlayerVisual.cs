@@ -6,24 +6,30 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerVisual : MonoBehaviour
 {
-    [SerializeField] private Player player;
     private Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        player.OnJump += Player_OnJump;
-        player.OnMove += Player_OnMove;
-        player.OnDuck += Player_OnDuck;
+
+        Player.Instance.OnJump += Player_OnJump;
+        Player.Instance.OnMove += Player_OnMove;
+        Player.Instance.OnDuck += Player_OnDuck;
+        Player.Instance.OnTakeDamage += Player_OnTakeDamage;
+        HealthSystem.Instance.OnDeath += HealthSystem_OnDeath;
     }
 
     private void Player_OnJump()
     {
         animator.SetTrigger("Jump");
     }
+    private void Player_OnTakeDamage()
+    {
+        animator.SetTrigger("Trip");
+    }
     private void Player_OnMove(float direction)
     {
-        if (!player.IsOnGround() || player.IsDucking())
+        if (!Player.Instance.IsOnGround() || Player.Instance.IsDucking())
         {
             return;
         }
@@ -39,5 +45,11 @@ public class PlayerVisual : MonoBehaviour
     private void Player_OnDuck()
     {
         animator.SetTrigger("Slide");
+    }
+
+    private void HealthSystem_OnDeath()
+    {
+        animator.SetBool("IsGameOver", true);
+        animator.SetTrigger("Fall");
     }
 }

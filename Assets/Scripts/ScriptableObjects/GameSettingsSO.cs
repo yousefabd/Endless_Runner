@@ -11,4 +11,5 @@ public class GameSettingsSO : ScriptableObject
     public int currentLevel = 1;
     public Vector3 blindSpotPosition = new Vector3(0, 0, -6f);
     public Vector3 farSpotPosition = new Vector3(0, 0, 70f);
+    public Vector3 playerSpawnOffset = new Vector3(0, 0.5f, -4.4f);
 }

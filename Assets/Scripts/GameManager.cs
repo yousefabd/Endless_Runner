@@ -9,22 +9,36 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public event Action OnGameOver;
     public event Action OnRestart;
+    public event Action OnPlayerReady;
     private void Awake()
     {
         Instance = this;
     }
     private void Start()
     {
-        HealthSystem.Instance.OnGameOver += HealthSystem_OnGameOver;
+        OnPlayerReady += Self_OnPlayerReady;
+        SpawnCharacter();
+    }
+    private void Self_OnPlayerReady()
+    {
+        HealthSystem.Instance.OnDeath += HealthSystem_OnGameOver;
     }
     private void HealthSystem_OnGameOver()
     {
-        OnGameOver?.Invoke();   
+        OnGameOver?.Invoke();
     }
+    private void SpawnCharacter()
+    {
+        CharacterSO character = CharacterSelector.Instance.GetSelectedCharacter();
+        Instantiate(character.prefab, GameSettings.Instance.GetPlayerSpawnOffset(), Quaternion.identity);
+        OnPlayerReady?.Invoke();
+    }
+
     public void RestartGame()
     {
         OnRestart?.Invoke();
         Scene activeScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(activeScene.name);
     }
+    
 }

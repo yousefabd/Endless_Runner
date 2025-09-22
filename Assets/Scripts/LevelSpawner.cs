@@ -52,7 +52,7 @@ public class LevelSpawner : MonoBehaviour
                 levelCountMax = 1;
                 break;
             case SpawnerState.Cooldown:
-                cooldownTimerMax = 10f;
+                cooldownTimerMax = 4f;
                 cooldownTimer = cooldownTimerMax;
                 break;
         }

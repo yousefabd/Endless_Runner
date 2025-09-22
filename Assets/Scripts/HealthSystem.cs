@@ -9,7 +9,7 @@ public class HealthSystem : MonoBehaviour
     int maxLives = 3;
     private int lives;
 
-    public event Action OnGameOver;
+    public event Action OnDeath;
     private void Awake()
     {
         Instance = this;
@@ -24,7 +24,7 @@ public class HealthSystem : MonoBehaviour
         lives--;
         if (lives <= 0)
         {
-            OnGameOver?.Invoke();
+            OnDeath?.Invoke();
         }
     }
     public int GetMaxLives()

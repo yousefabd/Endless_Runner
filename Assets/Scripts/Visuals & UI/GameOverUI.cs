@@ -15,6 +15,7 @@ public class GameOverUI : MonoBehaviour
     {
         GameManager.Instance.OnGameOver += GameManager_OnGameOver;
         RestartButton.onClick.AddListener(GameManager.Instance.RestartGame);
+        MainMenuButton.onClick.AddListener(() => { SceneLoader.LoadScene(SceneLoader.Scene.MainMenu); });
         gameObject.SetActive(false);
     }
     private void GameManager_OnGameOver()

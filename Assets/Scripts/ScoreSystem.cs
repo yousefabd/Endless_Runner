@@ -15,6 +15,16 @@ public class ScoreSystem : MonoBehaviour
     {
         Instance = this;
     }
+    private void Start()
+    {
+        GameManager.Instance.OnGameOver += GameManager_OnGameOver;
+    }
+    private void GameManager_OnGameOver()
+    {
+        int storedCollectibles = PlayerPrefs.GetInt(nameof(Collectible), 0);
+        PlayerPrefs.SetInt(nameof(Collectible), storedCollectibles + collectibles);
+        Debug.Log(storedCollectibles);
+    }
     public void AddCollectible()
     {
         collectibles += 1;

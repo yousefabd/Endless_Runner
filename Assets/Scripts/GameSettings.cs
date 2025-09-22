@@ -48,6 +48,10 @@ public class GameSettings : MonoBehaviour
     {
         return gameSettingsSO.farSpotPosition;
     }
+    public Vector3 GetPlayerSpawnOffset()
+    {
+        return gameSettingsSO.playerSpawnOffset;
+    }
     public float GetLaneMoveSpeed()
     {
         return gameSettingsSO.laneMoveSpeed;
