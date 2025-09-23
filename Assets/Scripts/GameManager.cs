@@ -9,19 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public event Action OnGameOver;
     public event Action OnRestart;
-    public event Action OnPlayerReady;
+    //public event Action OnPlayerReady;
     private void Awake()
     {
         Instance = this;
-    }
-    private void Start()
-    {
-        OnPlayerReady += Self_OnPlayerReady;
         SpawnCharacter();
-    }
-    private void Self_OnPlayerReady()
-    {
-        HealthSystem.Instance.OnDeath += HealthSystem_OnGameOver;
     }
     private void HealthSystem_OnGameOver()
     {
@@ -29,9 +21,9 @@ public class GameManager : MonoBehaviour
     }
     private void SpawnCharacter()
     {
-        CharacterSO character = CharacterSelector.Instance.GetSelectedCharacter();
+        CharacterSO character = CharacterSelector.GetSelectedCharacter();
         Instantiate(character.prefab, GameSettings.Instance.GetPlayerSpawnOffset(), Quaternion.identity);
-        OnPlayerReady?.Invoke();
+        HealthSystem.Instance.OnDeath += HealthSystem_OnGameOver;
     }
 
     public void RestartGame()

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e1646784abf63c4287af35f856f4588, type: 3}
-  m_Name: GameSettings
+  m_Name: GameSettingsSO
   m_EditorClassIdentifier: 
   jumpForce: 8
   playerSpeed: 8

@@ -19,10 +19,6 @@ public class CinemachineShakeVisual : MonoBehaviour
         basicMultiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         basicMultiChannelPerlin.m_AmplitudeGain = 0f;
         timer = timerMax;
-        GameManager.Instance.OnPlayerReady += GameManager_OnPlayerReady;
-    }
-    private void GameManager_OnPlayerReady()
-    {
         Player.Instance.OnTakeDamage += Player_OnTakeDamage;
     }
     private void Update()

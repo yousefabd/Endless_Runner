@@ -67,7 +67,6 @@ public class LevelSpawner : MonoBehaviour
             if (currentSpawnState == SpawnerState.Static)
             {
                 EnterState(SpawnerState.Cooldown);
-                Debug.Log("start moving");
             }
             else if (currentSpawnState == SpawnerState.Moving)
             {

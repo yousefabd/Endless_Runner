@@ -23,7 +23,6 @@ public class ScoreSystem : MonoBehaviour
     {
         int storedCollectibles = PlayerPrefs.GetInt(nameof(Collectible), 0);
         PlayerPrefs.SetInt(nameof(Collectible), storedCollectibles + collectibles);
-        Debug.Log(storedCollectibles);
     }
     public void AddCollectible()
     {

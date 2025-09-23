@@ -10,11 +10,11 @@ public class HealthBarUI : MonoBehaviour
 
     private void Start()
     {
-        heartContainerList = new List<Transform>();
-        GameManager.Instance.OnPlayerReady += GameManager_OnPlayerReady;
+        CreateHealthBar();
     }
-    private void GameManager_OnPlayerReady()
+    private void CreateHealthBar()
     {
+        heartContainerList = new List<Transform>();
         int maxLives = HealthSystem.Instance.GetMaxLives();
         Player.Instance.OnTakeDamage += Player_OnTakeDamage;
         for (int i = 0; i < maxLives; i++)

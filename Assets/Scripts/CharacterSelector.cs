@@ -2,24 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSelector : MonoBehaviour
+public static class CharacterSelector
 {
-    public static CharacterSelector Instance { get; private set; }
-    [SerializeField] private List<CharacterSO> characters;
-    private int selectedCharacterIndex = 0;
-
-    private void Awake()
-    {
-        Instance = this;
+    private static CharactersListSO charactersListSO;
+    private static List<CharacterSO> characters {
+        get
+        {
+            if (charactersListSO == null)
+            {
+                charactersListSO = Resources.Load<CharactersListSO>(nameof(CharactersListSO));
+            }
+            return charactersListSO.list;
+        }
     }
-
-    private void Start()
+    private static int selectedCharacterIndex = 0;
+    public static CharacterSO GetSelectedCharacter()
     {
         selectedCharacterIndex = PlayerPrefs.GetInt(nameof(CharacterSO), 0);
-    }
-
-    public CharacterSO GetSelectedCharacter()
-    {
         foreach (var chara in characters)
         {
             if (chara.characterIndex == selectedCharacterIndex)
@@ -29,7 +28,7 @@ public class CharacterSelector : MonoBehaviour
         }
         return characters[0];
     }
-    public void SelectCharacter(CharacterSO characterSO)
+    public static void SelectCharacter(CharacterSO characterSO)
     {
         selectedCharacterIndex = characterSO.characterIndex;
         PlayerPrefs.SetInt(nameof(CharacterSO), selectedCharacterIndex);
