@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public bool isGameOver = false;
     public event Action OnGameOver;
     public event Action OnRestart;
     //public event Action OnPlayerReady;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     private void HealthSystem_OnGameOver()
     {
         OnGameOver?.Invoke();
+        isGameOver = true;
     }
     private void SpawnCharacter()
     {
@@ -31,6 +33,10 @@ public class GameManager : MonoBehaviour
         OnRestart?.Invoke();
         Scene activeScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(activeScene.name);
+    }
+    public bool IsGameOver()
+    {
+        return isGameOver;
     }
     
 }

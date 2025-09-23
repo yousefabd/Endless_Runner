@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class CharacterSelector
@@ -27,6 +28,10 @@ public static class CharacterSelector
             }
         }
         return characters[0];
+    }
+    public static CharacterSO GetDefaultCharacter()
+    {
+        return characters.Where(c => c.characterIndex == 0).FirstOrDefault();
     }
     public static void SelectCharacter(CharacterSO characterSO)
     {

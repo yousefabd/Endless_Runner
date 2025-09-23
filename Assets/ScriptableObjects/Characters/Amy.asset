@@ -16,3 +16,4 @@ MonoBehaviour:
   characterIndex: 1
   price: 200
   prefab: {fileID: 678012532170381656, guid: c6f00090992ccac4a877e459bd11a2ee, type: 3}
+  renderTexture: {fileID: 8400000, guid: cffbec367e1a10c4abee29983f662e00, type: 2}

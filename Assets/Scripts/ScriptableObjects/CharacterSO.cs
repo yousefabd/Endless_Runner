@@ -8,4 +8,5 @@ public class CharacterSO : ScriptableObject
     public int characterIndex;
     public int price;
     public Transform prefab;
+    public RenderTexture renderTexture;
 }

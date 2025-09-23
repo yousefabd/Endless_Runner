@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Timmy
   m_EditorClassIdentifier: 
   characterName: Timmy
+  characterIndex: 0
   price: 0
   prefab: {fileID: 2781467749645395218, guid: df0576918e5fe8a47a11545ead31fbd6, type: 3}
+  renderTexture: {fileID: 8400000, guid: 5ea16f4857a931d48be97cbaafde54d8, type: 2}

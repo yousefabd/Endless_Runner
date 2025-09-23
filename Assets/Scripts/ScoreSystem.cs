@@ -17,7 +17,8 @@ public class ScoreSystem : MonoBehaviour
     }
     private void Start()
     {
-        GameManager.Instance.OnGameOver += GameManager_OnGameOver;
+        if(GameManager.Instance)
+            GameManager.Instance.OnGameOver += GameManager_OnGameOver;
     }
     private void GameManager_OnGameOver()
     {

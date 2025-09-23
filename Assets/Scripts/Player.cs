@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(TagNames.Obstacle))
         {
-            if (invincibleTimer <= 0)
+            if (invincibleTimer <= 0 && !GameManager.Instance.IsGameOver())
             {
                 OnTakeDamage?.Invoke();
             }
